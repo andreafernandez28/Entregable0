@@ -11,6 +11,7 @@
 
 nav a {
   text-decoration: none;
+ 
 }
 
 .bd-placeholder-img {
@@ -37,7 +38,7 @@ nav a {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  color: black;
+  color: rgb(209, 20, 20);
   font-weight: bold;
 }
 
@@ -82,7 +83,7 @@ footer p {
 }
 
 .site-header .dropdown-menu a {
-  color: black;
+  color: rgb(37, 1, 1);
 }
 
 .dropzone {
@@ -119,7 +120,7 @@ footer p {
 .left {
   float: left;
   padding: 4px;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(97, 6, 6, 0.5);
 }
 
 .lds-ring div {
@@ -187,4 +188,7 @@ a.custom-card:hover {
 
 .checked {
   color: orange;
+}
+#header {
+  padding-top: 0px;
 }

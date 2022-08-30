@@ -39,3 +39,16 @@ let getJSONData = function(url){
         return result;
     });
 }
+
+/*eventlistener que recibe el dato almacenado localmente y lo agrega al documento html*/
+const user = document.getElementById("header")
+console.log(user)
+document.addEventListener("DOMContentLoaded", function (e) {
+  let usuario = localStorage.getItem("username");
+
+  htmlContentToAppend = `<a class="nav-link">${usuario}</a>`
+
+  user.innerHTML = htmlContentToAppend;
+
+});
+

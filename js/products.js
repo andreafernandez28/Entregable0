@@ -32,12 +32,14 @@ function showAutosList(){
     }   
 }
 /* A getJSONData()se le envía la dirección de Json para acceder al listado de autos. La función verifica el estado del objeto
- y se cargan los datos enel array de la línea 1. Finalmente se llama a la función showAutosList con el array como parámetro 
+ y se cargan los datos en el array de la línea 1. Finalmente se llama a la función showAutosList con el array como parámetro 
  para cargar los datos en pantalla*/
 
+ 
+const catID = localStorage.getItem("catID") /* agrego el catid para mostrar todos los productos en lugar de solo los autos*/
 document.addEventListener("DOMContentLoaded", function(e){
     
-    getJSONData(PRODUCTS_URL + "101" + EXT_TYPE).then(function(resultObj){
+    getJSONData(PRODUCTS_URL + catID + EXT_TYPE).then(function(resultObj){
         if (resultObj.status === "ok")
         {
             autosArray = resultObj.data;

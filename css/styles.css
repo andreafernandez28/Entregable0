@@ -205,7 +205,30 @@ a.custom-card:hover {
   border-width: 1px;
 }
 #search{
+  background-color: white;
+  border-width: 1px;
+  width: 150px;
+}
+#rangeMin{
+  background-color: white;
+  border-width: 1px;
+  height: 35px;
+  width: 75px;
+}
+#rangeMax{
+  background-color: white;
+  border-width: 1px;
+  height: 35px;
+  width: 75px;
+}
+#filter{
   background-color: rgb(223, 211, 211);
   border-width: 1px;
-  text-align: left;
+}
+#clean{
+  background-color: rgb(223, 211, 211);
+  border-width: 1px;
+}
+#header {
+  padding-top: 0rem;
 }

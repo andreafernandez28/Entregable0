@@ -189,24 +189,23 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
-#filtros {
+#filters {
   text-align: right;
 }
 #sortRelev {
-  background-color: lightgray;
+  background-color: rgb(223, 211, 211);
   border-width: 1px;
 }
 #precioAsc {
-  background-color: lightgray;
+  background-color: rgb(223, 211, 211);
   border-width: 1px;
 }
 #precioDesc {
-  background-color: lightgray;
+  background-color: rgb(223, 211, 211);
   border-width: 1px;
 }
-#buscador{
-  background-color: lightgray;
-  border-color: black;
+#search{
+  background-color: rgb(223, 211, 211);
   border-width: 1px;
-  border-style: ridge;
+  text-align: left;
 }

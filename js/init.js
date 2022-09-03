@@ -40,13 +40,14 @@ let getJSONData = function(url){
     });
 }
 
-/*eventlistener que recibe el dato almacenado localmente y lo agrega al documento html*/
+/* E2: eventlistener que recibe el nombre de usuario almacenado localmente y lo agrega al documento html*/
 const user = document.getElementById("header")
 console.log(user)
 document.addEventListener("DOMContentLoaded", function (e) {
   let usuario = localStorage.getItem("username");
 
-  htmlContentToAppend = `<a class="nav-link">${usuario}</a>`
+  htmlContentToAppend = 
+    `<div class="nav-link"> Hola, ${usuario}</a>`
 
   user.innerHTML = htmlContentToAppend;
 

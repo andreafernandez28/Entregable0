@@ -3,7 +3,7 @@ let productsArray = [];
 let min = undefined;
 let max = undefined;
 let search = "";
-const catID = localStorage.getItem("catID") /* E2: agrego el catid para mostrar todos los productos en lugar de solo los autos */
+const catID = localStorage.getItem("catID"); /* E2: agrego el catid para mostrar todos los productos en lugar de solo los autos */
 
 /* Función para recibir datos e imprimirlos en pantalla*/
 function showProductsList(){
@@ -12,32 +12,38 @@ function showProductsList(){
 
     for (let i = 0; i < productsArray.products.length; i++)  { 
         let product = productsArray.products[i];
-        
-/* E2: Transforma los nombres de los productos en minúsculas para que luego el producto pueda figurar en la búsqueda */
-        if(product.name.toLowerCase().includes(search.toLowerCase())){ 
-           
-            htmlContentToAppend += `
-            <div class="list-group-item list-group-item-action">
-                <div class="row">
-                    <div class="col-3">
-                        <img src="` + product.image + `" alt="product image" class="img-thumbnail">
-                    </div>
-                </div>
-                    <div class="col">
-                        <div class="d-flex w-100 justify-content-between">
-                            <div class="mb-1">
-                                <h4>`+ product.name +`</h4> 
-                                <p> `+ product.cost + " " + product.currency +`</p>
-                                <p> `+ product.description +`</p> 
-                            </div>
-                                <small class="text-muted">` + product.soldCount + ` vendidos</small> 
-                        </div>
 
+/* E2: Creo condicional para filtrar por rango de precios, a utilizar en el event listener con el botón de filtrar */
+
+        product.cost=parseInt(product.cost);
+        if((product.cost >= min || min == undefined) && (product.cost <= max || max == undefined)){ 
+
+/* E2: Transforma los nombres de los productos en minúsculas para que luego el producto pueda figurar en la búsqueda */
+            if(product.name.toLowerCase().includes(search.toLowerCase())){ 
+            
+                htmlContentToAppend += `
+                <div class="list-group-item list-group-item-action">
+                    <div class="row">
+                        <div class="col-3">
+                            <img src="` + product.image + `" alt="product image" class="img-thumbnail">
+                        </div>
+                    </div>
+                        <div class="col">
+                            <div class="d-flex w-100 justify-content-between">
+                                <div class="mb-1">
+                                    <h4>`+ product.name +`</h4> 
+                                    <p> `+ product.cost + " " + product.currency +`</p>
+                                    <p> `+ product.description +`</p> 
+                                </div>
+                                    <small class="text-muted">` + product.soldCount + ` vendidos</small> 
+                            </div>
+
+                        </div>
                     </div>
                 </div>
-            </div>
-            `
-            document.getElementById("cat-list-container").innerHTML = htmlContentToAppend; 
+                `
+                document.getElementById("cat-list-container").innerHTML = htmlContentToAppend; 
+            }
         }
     }   
 }
@@ -83,6 +89,35 @@ document.addEventListener("DOMContentLoaded", function(e){
 
         showProductsList(productsArray);
     });
+
+    document.getElementById("filter").addEventListener("click", function(){
+
+        if (document.getElementById("rangeMin").value !=""){
+            min= parseInt(document.getElementById("rangeMin").value);
+        }
+        else{
+            min = undefined;
+        }
+
+        if (document.getElementById("rangeMax").value !=""){
+            max= parseInt(document.getElementById("rangeMax").value);
+        }
+        else{
+            max = undefined;
+        }
+
+        showProductsList(productsArray);
+    });
+
+    document.getElementById("clean").addEventListener("click", function(){
+        min = undefined;
+        max = undefined;
+        showProductsList(productsArray);
+
+        document.getElementById("rangeMax").value ="";
+        document.getElementById("rangeMin").value ="";
+
+    });
 /* E2: desafiate */
     document.getElementById("search").addEventListener("input", function(){
 
@@ -92,5 +127,3 @@ document.addEventListener("DOMContentLoaded", function(e){
     });
 
 });
-
-

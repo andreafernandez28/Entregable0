@@ -28,11 +28,12 @@ function showProductsInfo () {
                     <p> `+ productsInfoArray.description +`</p> 
                     <h6>Vendidos</h6> 
                     <p> `+ productsInfoArray.soldCount+`</p> 
+                    <h6>Fotos</h6> 
                 </div>
             </div>   
         </div>  
         <div class="row">
-            <h6>Fotos</h6> 
+
             <div class="column">
                 <img src="` + productsInfoArray.images[0] + `" alt="img1" style="width:100%">
             </div>

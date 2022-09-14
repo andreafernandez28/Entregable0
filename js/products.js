@@ -5,7 +5,14 @@ let max = undefined;
 let search = "";
 const catID = localStorage.getItem("catID"); /* E2: agrego el catid para mostrar todos los productos en lugar de solo los autos */
 
-/* Función para recibir datos e imprimirlos en pantalla*/
+/* E3: función donde se guarda el ID del producto*/
+
+function setProdId(id) {
+    localStorage.setItem("prodId", id);
+    window.location = "products.html"
+}
+
+/* E1: Función para recibir datos e imprimirlos en pantalla*/
 function showProductsList(){
 
     let htmlContentToAppend = "";
@@ -21,8 +28,9 @@ function showProductsList(){
 /* E2: Transforma los nombres de los productos en minúsculas para que luego el producto pueda figurar en la búsqueda */
             if(product.name.toLowerCase().includes(search.toLowerCase())){ 
             
+/* E3: añado href para redirigir a products-info al hacer click en cada producto, obteniendo los datos almacenados en la función anterior */
                 htmlContentToAppend += `
-                <div class="list-group-item list-group-item-action">
+                <a href="product-info.html" onclick="setProdId(${product.id})" class="list-group-item list-group-item-action"> 
                     <div class="row">
                         <div class="col-3">
                             <img src="` + product.image + `" alt="product image" class="img-thumbnail">
@@ -47,6 +55,8 @@ function showProductsList(){
         }
     }   
 }
+
+
 /* A getJSONData()se le envía la dirección de Json para acceder al listado de autos. La función verifica el estado del objeto
  y se cargan los datos en el array de la línea 1. Finalmente se llama a la función showAutosList con el array como parámetro 
  para cargar los datos en pantalla*/
@@ -62,6 +72,7 @@ document.addEventListener("DOMContentLoaded", function(e){
             showProductsList(productsArray);
         }
     });
+    
 /* E2: agrego events listeners a la funcion donde se se accede al listado con getJSONdata para que se cumpla con cada filtro al hacer click en los respectivos botones*/
     document.getElementById("sortRelev").addEventListener("click", function(){
 
@@ -127,3 +138,5 @@ document.addEventListener("DOMContentLoaded", function(e){
     });
 
 });
+
+

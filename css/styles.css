@@ -237,6 +237,6 @@ a.custom-card:hover {
   width: 25%;
   padding: 1px;
 }
-.h1 {
-  text-align: center;
+.mb-1 {
+  margin-left: 10px;
 }

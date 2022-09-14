@@ -232,3 +232,11 @@ a.custom-card:hover {
 #header {
   padding-top: 0rem;
 }
+.column {
+  float: left;
+  width: 25%;
+  padding: 1px;
+}
+.h1 {
+  text-align: center;
+}

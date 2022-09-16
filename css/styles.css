@@ -240,3 +240,29 @@ a.custom-card:hover {
 .mb-1 {
   margin-left: 10px;
 }
+.fa{
+  color: rgb(190, 180, 180);
+}
+.checked{
+  color: rgb(228, 206, 13);
+}
+h5{
+  margin-left: 10px;
+}
+#opinion {
+  height: 80px;
+  width: 350px;
+  margin-left: 10px;
+}
+.rating {
+  margin-left: 10px;
+}
+#bttn{
+  background-color: #227fca;
+  color: white;
+  border: none;
+  margin-left: 10px;
+}
+#stars {
+  margin-left: 10px;
+}

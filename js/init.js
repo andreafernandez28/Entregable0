@@ -45,9 +45,10 @@ const user = document.getElementById("header")
 console.log(user)
 document.addEventListener("DOMContentLoaded", function (e) {
   let usuario = localStorage.getItem("username");
+  let showUsuario = usuario.replace(/["]+/g, '')
 
   htmlContentToAppend = 
-    `<div class="nav-link"> Hola, ${usuario}</a>`
+    `<div class="nav-link"> Hola, ${showUsuario}</a>`
 
   user.innerHTML = htmlContentToAppend;
 

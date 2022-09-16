@@ -7,6 +7,6 @@ function Redirect() {
     if (usuario&&contraseña) {
         window.location.href="principal.html"
         /* E2: Almaceno el nombre de usuario al inicial sesión y lo convierto en una cadena JSON */
-        localStorage.setItem('username',JSON.stringify(usuario)) 
+        localStorage.setItem("username",JSON.stringify(usuario)) 
     }  
 }

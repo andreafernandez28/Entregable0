@@ -1,6 +1,7 @@
 let productsInfoArray = [];
 const prodId =  localStorage.getItem("prodId");
 let commentsArray = [];
+let relatedProducts = [];
 
 /* E3: añado event listener para obtener datos de json de productos */
 document.addEventListener("DOMContentLoaded", function(e){
@@ -8,7 +9,9 @@ document.addEventListener("DOMContentLoaded", function(e){
         if (resultObj.status === "ok"){
           
             productsInfoArray = resultObj.data;
+            relatedProducts = resultObj.data.relatedProducts; /* E4: cargo datos de json al array relatedProducts*/
             showProductsInfo (productsInfoArray);
+            showRelated ()
         }
     });
 })
@@ -21,10 +24,9 @@ document.addEventListener("DOMContentLoaded", function(e){
                 showComments (commentsArray);
             }
         });
-        
-})
-        
-/* E3: función para mostrar info de cada producto*/
+
+    });
+
 function showProductsInfo () {
 
     let htmlContentToAppend = "";
@@ -32,7 +34,7 @@ function showProductsInfo () {
         <div class="col">
             <div class="d-flex w-100 justify-content-between">
                 <div class="mb-1">
-                    <h1>`+ productsInfoArray.name +`</h1> 
+                    <h1>`+ productsInfoArray.name +`</h1> <br></br>
                     <h6>Precio</h6> 
                     <p> `+ productsInfoArray.cost + " " + productsInfoArray.currency +`</p>
                     <h6>Descripción</h6> 
@@ -154,3 +156,35 @@ document.getElementById("bttn").addEventListener("click", function(){
 
     addComment()
 });
+
+                                    /* E4: productos relacionados */
+
+/* E4: almaceno el id de los productos relacionados para que al hacer click, se acceda a la página del producto*/
+function setProdId(id) {
+    localStorage.setItem("prodId", id);
+    window.location = "product-info.html"
+}
+
+/* E4: función para mostrar los productos relacionados */
+function showRelated (){
+    let htmlContentToAppend = "";
+
+    for (let i = 0; i < relatedProducts.length; i++)  { 
+        let product =  relatedProducts[i];
+
+        htmlContentToAppend += `
+        <div class="column">
+            <div class="col-6">
+                <div onclick="setProdId(${product.id})" class="card mb-3 shadow-sm custom-card cursor-active" >
+                    <img src="` + product.image + `" alt="img1" style="width:100%">
+                    <p>`+ product.name +`</p> 
+                </div>
+            </div> 
+        </div> 
+        `
+        document.getElementById("related").innerHTML = htmlContentToAppend; 
+    }
+
+}        
+
+    

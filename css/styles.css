@@ -229,9 +229,6 @@ a.custom-card:hover {
   background-color: rgb(223, 211, 211);
   border-width: 1px;
 }
-#header {
-  padding-top: 0rem;
-}
 .column {
   float: left;
   width: 25%;
@@ -267,5 +264,39 @@ h5{
   margin-left: 10px;
 }
 h1 {
-  margin-left: 500px;
+
+  text-align: center;
 }
+.dropdown-content a {
+  color: rgb(0, 0, 0);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+.dropbtn {
+  background-color:#212529;
+  color: white;
+  padding: 10spx;
+  font-size: 10px;
+  border: none;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+
+}
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+.dropdown:hover .dropdown-content {display: block;}
+.header {
+  margin-top: 0.5px;
+}
+

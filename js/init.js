@@ -42,15 +42,28 @@ let getJSONData = function(url){
 
 /* E2: eventlistener que recibe el nombre de usuario almacenado localmente y lo agrega al documento html*/
 const user = document.getElementById("header")
-console.log(user)
+
 document.addEventListener("DOMContentLoaded", function (e) {
   let usuario = localStorage.getItem("username");
   let showUsuario = usuario.replace(/["]+/g, '')
 
+/* E4: añado dropdown menu */
   htmlContentToAppend = 
-    `<div class="nav-link"> Hola, ${showUsuario}</a>`
-
+    ` <div class="nav-link dropdown"> Hola, ${showUsuario}</a>
+          <div class="dropdown">
+            <button class="dropbtn">▼</button>
+                <div class="dropdown-content">
+                  <a href="cart.html">Mi carrito</a>
+                  <a href="my-profile.html">Mi perfil</a>
+                  <a href="index.html">Cerrar sesión</a>
+                </div>
+              </div>
+          </div>
+      </div>
+    `
   user.innerHTML = htmlContentToAppend;
 
 });
+
+
 

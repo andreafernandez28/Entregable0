@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
 /* E4: añado dropdown menu */
   htmlContentToAppend = 
-    ` <div class="nav-link dropdown"> Hola, ${showUsuario}</a>
+    ` <div class="nav-link dropdown">Hola, ${showUsuario}</a>
           <div class="dropdown">
             <button class="dropbtn">▼</button>
                 <div class="dropdown-content">

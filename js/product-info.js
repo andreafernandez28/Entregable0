@@ -1,7 +1,7 @@
 let productsInfoArray = [];
 const prodId =  localStorage.getItem("prodId");
 let commentsArray = [];
-let relatedProducts = [];
+let relatedProducts = []; /* E4: array para recibir datos de productos relacionados */ 
 
 /* E3: añado event listener para obtener datos de json de productos */
 document.addEventListener("DOMContentLoaded", function(e){

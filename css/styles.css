@@ -282,7 +282,7 @@ h1 {
 }
 .dropdown {
   position: relative;
-  display: inline-block;
+  display: inline;
 }
 .dropdown-content {
   display: none;
@@ -296,7 +296,7 @@ h1 {
   background-color: #ddd;
 }
 .dropdown:hover .dropdown-content {display: block;}
-.header {
-  margin-top: 0.5px;
+#header {
+  margin-top: 7.5px;
 }
 

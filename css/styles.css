@@ -300,3 +300,13 @@ h1 {
   margin-top: 7.5px;
 }
 
+#total {
+  font-weight: bold;
+}
+#comprar{
+  margin-left: 100px;
+ background-color: green;
+}
+#newTotal{
+  font-weight: bold;
+}

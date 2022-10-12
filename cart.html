@@ -37,9 +37,42 @@
     </div>
   </nav>
   <main>
+    <!-- E5: Añado titulos e id para agregar datos de artículos en el carrito --> 
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+      <h1>Carrito de compras</h1>
+      <h3>Artículos a comprar</h3><br></br>
+      <div class="list-group" id="articles-container">
+      </div>
+      <div class="list-group" id="added-articles-container">
+      </div><hr>
+       <!-- E5: Añado form check de tipo radio para seleccionar el tipo de envío -->
+      <div>
+        <h3>Tipo de envío</h3>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="optionradio"  id="radio1" checked>
+          <label class="form-check-label" for="radio1">
+            Premium 2 a 5 días (15%)
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="optionradio" id="radio2" checked> 
+          <label class="form-check-label" for="radio2">
+            Express 5 a 8 días (7%)
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="optionradio" id="radio3" checked>
+          <label class="form-check-label" for="radio3">
+            Standard 12 a 15 días (5%)
+          </label>
+        </div>
+      </div><br></br>
+    <!-- E5: Añado inputs para seleccionar dirección de envío -->
+      <div>
+        <h3>Dirección de envío</h3>
+        <input id="calle" type="text" placeholder="Calle" size="50px"/> 
+        <input id="numero" type="text" placeholder="Número"/><br></br>
+        <input type="text" placeholder="Esquina" id="esquina" size="50px"/> <br></br>
       </div>
     </div>
   </main>

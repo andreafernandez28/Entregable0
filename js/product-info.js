@@ -34,7 +34,7 @@ function showProductsInfo () {
         <div class="col">
             <div class="d-flex w-100 justify-content-between">
                 <div class="mb-1">
-                    <h1>`+ productsInfoArray.name +`</h1> <br></br>
+                    <h1>`+ productsInfoArray.name +`<button id="comprar" type="button" onclick="addToCart()" class="btn btn-success">Comprar</button>  </h1> <br></br>
                     <h6>Precio</h6> 
                     <p> `+ productsInfoArray.cost + " " + productsInfoArray.currency +`</p>
                     <h6>Descripción</h6> 
@@ -203,5 +203,11 @@ function showRelated (){
     }
 
 }        
+/* E5: desafío */
 
-    
+
+function addToCart(){
+
+    window.location = "cart.html"
+}
+

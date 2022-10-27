@@ -310,3 +310,109 @@ h1 {
 #newTotal{
   font-weight: bold;
 }
+#cost{
+  position: inherit;
+  text-align: right;
+  font-weight: bold;
+  margin-bottom: 10px;
+  height: auto;
+}
+#shipping{
+  position: inherit;
+  text-align: right;
+  font-weight: bold;
+  margin-bottom: 10px;
+  height: auto;
+}
+#suma{
+  position: inherit;
+  text-align: right;
+  font-weight: bold;
+  margin-bottom: 10px;
+  height: auto;
+}
+
+
+ul{
+  padding-left: 0%;
+  }
+
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+#saveAddress{
+  float: right;
+}
+
+#cost{
+  float: right;
+}
+#shipping{
+  float: right;
+}
+#suma{
+  float: right;
+}
+#numero{
+  float: right;
+  size: 10px;
+}
+#save{
+  float: right;
+}
+#buy{
+  width: 100%;
+}
+#modalFb{
+  color: rgb(255, 30, 30);
+  font-size: 15px;
+}
+
+.abs-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+#loginForm {
+  width: 250px;
+  margin-left: 40%;
+}
+#saveForm{
+  float: right;
+}

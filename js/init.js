@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
   let usuario = localStorage.getItem("username");
   let showUsuario = usuario.replace(/["]+/g, '')
 
-/* E4: añado dropdown menu */
+/* E4: añado dropdown menu y borro nombre de usuario */
   htmlContentToAppend = 
     ` <div class="nav-link dropdown">Hola, ${showUsuario}</a>
           <div class="dropdown">
@@ -55,15 +55,18 @@ document.addEventListener("DOMContentLoaded", function (e) {
                 <div class="dropdown-content">
                   <a href="cart.html">Mi carrito</a>
                   <a href="my-profile.html">Mi perfil</a>
-                  <a href="index.html">Cerrar sesión</a>
+                  <a id="endSession" href="index.html">Cerrar sesión</a>
                 </div>
               </div>
           </div>
       </div>
     `
   user.innerHTML = htmlContentToAppend;
+  document.getElementById("endSession").addEventListener('click', function(){
+    window.localStorage.removeItem('username');
 
-});
+  });
+})
 
 
 

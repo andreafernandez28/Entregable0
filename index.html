@@ -31,15 +31,20 @@
       <img src="img/login.png" width="350px"
         alt="e-mercado">
       <h1>Inicio de sesión</h1><br></br> 
-      <divl> 
-        <!-- label para inicio de sesión -->
-          <label for="Usuario">Usuario</label><br></br>
-          <input id="usuario" type="text" placeholder="Usuario" /><br></br>
-          
-          <label for="Contraseña">Contraseña</laberl><br></br>
-            <input type="password" placeholder="Contraseña" id="contraseña"/>  <br></br>
-          <button type="button"  onclick="Redirect()">Ingresar</button> <!-- redirigir a página principal -->
+      <div >
+        <form id="loginForm">
+          <div class="form-group ">
+      <!-- label para inicio de sesión -->
+          <label for="usuario">Usuario</label><br></br>
+          <input class="form-control" id="usuario" type="text" placeholder="Usuario" /><br></br>
+        </div>
+        <div class="form-group ">
+          <label for="contraseña">Contraseña</label><br></br>
+            <input class="form-control" type="password" placeholder="Contraseña" id="contraseña"/>  <br></br>
+          </div>
+          <button class="btn btn-primary" type="button"  onclick="Redirect()">Ingresar</button> <!-- redirigir a página principal -->
             <br></br>
+          </form><br></br>
       </div> 
       <a href="#">Volver arriba</a>
       </p>

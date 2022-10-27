@@ -45,34 +45,152 @@
       </div>
       <div class="list-group" id="added-articles-container">
       </div><hr>
-       <!-- E5: Añado form check de tipo radio para seleccionar el tipo de envío -->
+       <!-- E5: Añado form check de tipo radio para seleccionar el tipo de envío 
+        
+      /// E6: Añado Onclick para que se tome el valor seleccionado y se haga el cálculo en la función que corresponda -->
       <div>
         <h3>Tipo de envío</h3>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="optionradio"  id="radio1" checked>
+          <input class="form-check-input" type="radio" name="optionradio"  id="radio1" checked onclick="shipmentCost();sumaTotal()" >
           <label class="form-check-label" for="radio1">
             Premium 2 a 5 días (15%)
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="optionradio" id="radio2" checked> 
+          <input class="form-check-input" type="radio" name="optionradio" id="radio2" onclick="shipmentCost();sumaTotal()"> 
           <label class="form-check-label" for="radio2">
             Express 5 a 8 días (7%)
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="optionradio" id="radio3" checked>
+          <input class="form-check-input" type="radio" name="optionradio" id="radio3" onclick="shipmentCost();sumaTotal()" >
           <label class="form-check-label" for="radio3">
             Standard 12 a 15 días (5%)
           </label>
         </div>
       </div><br></br>
     <!-- E5: Añado inputs para seleccionar dirección de envío -->
-      <div>
-        <h3>Dirección de envío</h3>
-        <input id="calle" type="text" placeholder="Calle" size="50px"/> 
-        <input id="numero" type="text" placeholder="Número"/><br></br>
-        <input type="text" placeholder="Esquina" id="esquina" size="50px"/> <br></br>
+      <div >
+        <h3>Dirección de envío</h3> 
+        <form novalidate class="needs-validation"id="address">
+          <div class="row mb-4">
+            <div class="col">
+              <div class="form-outline">
+                <input type="text" placeholder="Calle" id="calle" class="form-control" />
+                <div class="invalid-feedback">
+                  Ingresa el nombre de la calle
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-outline">
+                <input type="number" placeholder="Número" id="numero" class="form-control" />
+                <div class="invalid-feedback">
+                  Ingresa el número de puerta
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-outline">
+            <input type="text" placeholder="Esquina" id="esquina" class="form-control" />
+            <div class="invalid-feedback">
+              Ingresa el nombre de la esquina
+            </div>
+          </div>
+        </form> <br></br>
+      </div><br></br>
+    <!-- E6: Añado lista para costos -->
+    <h3>Costos</h3>
+    <ul>
+      <li  class="list-group-item list-group-item-action">
+        <h6 class="my-0">Subtotal</h6>
+        <small class="text-muted">Costo unitario del producto por cantidad</small>
+        <span id="cost" style="font-size: medium;"></span> 
+      </li>
+      <li class="list-group-item list-group-item-action">
+        <h6 class="my-0">Costo de envío</h6>
+        <small class="text-muted">Según el tipo de envío</small>
+        <span id="shipping" style="font-size: medium;"></span>
+      </li>
+      <li class="list-group-item list-group-item-action">
+        <h6 class="my-0">Total</h6>
+        <span  id="suma" style="font-size: medium;"></span>
+      </li>
+    </ul>
+  <!-- E6: Añado formulario para método de pago y div para el feedback de validación-->
+  <h3>Formas de pago</h3>
+      <div id="paymentSelected"> No ha seleccionado un método
+        <button id="choose" type="button" class="m-1 btn btn-link" data-bs-toggle="modal">Seleccionar</button>
+        <div class="invalid-feedback">Debe seleccionar un método de pago</div>
+    </div>
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h6 style="text-align: center;" class="modal-title">Métodos de pago</h6><br></br>
+        <form novalidate>
+        <div>
+          <div class="form-check">
+
+            <label class="form-check-label" for="radio4">
+              Tarjeta de crédito
+            </label>
+            <input class="form-check-input" name="Transferencia bancaria" type="radio" id="radio4" onclick="creditCard()"> 
+
+          </div>
+
+          <div class="form-group"> 
+            <label for="name"></label>
+            <input style="padding-left: 5px;" type="text" class="form-control" id="name" placeholder="Nombre del titular">
+            <div class="invalid-feedback">
+              Ingresa el nombre del titular
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="num"></label>
+            <input style="padding-left: 5px;" type="text" placeholder="Número de la tarjeta" class="form-control" id="num">
+            <div class="invalid-feedback">
+              Ingresa el número de la tarjeta
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="cvv"></label>
+            <input style="padding-left: 5px;" type="number" placeholder="CVV" class="form-control" id="cvv">
+            <div class="invalid-feedback">
+              Ingresa el código de seguridad de la tarjeta
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="date"></label>
+            <input style="padding-left: 5px;" type="date" placeholder="MM/AA" class="form-control" id="date">
+            <div class="invalid-feedback">
+              Ingresa la fecha de vencimiento de la tarjeta
+            </div>
+          </div> 
+          <div class="form-check">
+
+          <label class="form-check-label" for="radio5">
+            Transferencia bancaria
+          </label>          
+          <input class="form-check-input " type="radio" name="Transferencia bancaria" id="radio5" onclick="bankAccount()"> 
+
+          </div>
+          <div class="form-group"> 
+            <label for="cuenta" ></label>
+            <input style="padding-left: 5px;" type="text" placeholder="Número de cuenta" class="form-control" id="ba">
+            <div class="invalid-feedback">
+              Ingresa el número de cuenta
+            </div>
+          </div><br></br>
+          <button class="btn btn-primary " data-toggle="button" id="saveForm" onclick="save()" >Guardar cambios</button>
+          <div class="invalid-feedback">Complete los campos por favor</div>
+        </div>
+        </form><br></br>
+
+      </div>         
+      </div><br></br>
+  <!-- E6: Añado botón para comprar-->
+      <button class="btn btn-primary" id="buy" onclick="buy()" >Finalizar compra</button>
+
       </div>
     </div>
   </main>
@@ -100,3 +218,7 @@
 </body>
 
 </html>
+
+
+
+

@@ -416,3 +416,24 @@ ul{
 #saveForm{
   float: right;
 }
+#profile{
+  margin-left: 20px;
+  margin-right: 10px;
+}
+#pfp{
+ float: right;
+ margin-top: 10px;
+ margin-right: 200px;
+ width: 150px
+}
+#prf{
+  float: left;
+  margin-top: 50px;
+  margin-left: 50px;
+}
+#delete{
+  color: rgb(209, 7, 7);
+}
+#delete1{
+  color: rgb(209, 7, 7);
+}

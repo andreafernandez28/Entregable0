@@ -15,9 +15,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
         window.location.href="index.html"
     } if (usuario){
         email.value = showUsuario;
-        localStorage.getItem("name", name);
-        localStorage.setItem("lastname", lastname);
-        localStorage.setItem("phone", phone);
     }
 })
 

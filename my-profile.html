@@ -52,10 +52,67 @@
     </div>
   </nav>
   <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+    <!-- E7: Form para añadir datos del perfil + desafío -->
+    <div class="col">
+      <div>
+        <h1 id="prf"  class="mb-1">Mi perfil</h1> 
+        <span><img id="pfp" src="img/pfp.jpg"/></span>
       </div>
+      <br></br>
+      <br></br>
+      <br></br>
+    <form
+    action="#"
+    method="get"
+    class="row mt-4"
+    novalidate
+    id="profile"
+  >
+      <div class="row g-3">
+        <div class="col-lg-6">
+          <label for="name" class="form-label">Primer nombre*</label>
+          <input type="text" class="form-control" id="name" />
+          <div class="invalid-feedback">Debe ingresar su nombre.</div>
+        </div>
+        
+        <div class="col-lg-6">
+          <label for="secName" class="form-label">Segundo nombre</label>
+          <input type="text" class="form-control" id="secName" />
+        </div>
+
+        <div class="col-lg-6">
+          <label for="lastname" class="form-label">Primer Apellido*</label>
+          <input type="text" class="form-control" id="lastname" />
+            <div class="invalid-feedback">Debe ingresar un apellido.</div>
+        </div>
+
+          <div class="col-lg-6">
+            <label for="secLastName" class="form-label">Segundo apellido</label>
+            <input type="text" class="form-control" id="secLastname" />
+          </div>
+
+          <div class="col-lg-6">
+            <label for="email" class="form-label">Email</label>
+            <input type="text" class="form-control" id="email" />
+          </div>
+
+          <div class="col-lg-6">
+            <label for="phone" class="form-label">Teléfono*</label>
+            <input type="text" class="form-control" id="phone" />
+            <div class="invalid-feedback">Debe ingresar un teléfono de contacto</div>
+          </div>
+
+          <div class="col-lg-6">
+            <label for="upload" class="form-label">Sube una foto de perfil:</label>
+            <input type="file" accept="image/*" id="upload" name="pfPic" onchange="loadFile(event)"><br></br>
+          </div>
+
+
+          <button class="btn btn-primary" type="button" onclick="savePf()">Guardar cambios</button> 
+        </div>
+      </div>
+  </form>
+
     </div>
   </main>
   <footer class="text-muted">

@@ -342,7 +342,7 @@ function deleteItem() {
     for (let i = 0; i < cartArray.articles.length; i++)  { 
         let articles = cartArray.articles[i];
         let cost = articles.unitCost;
-        document.getElementById("cost").innerHTML= (costo- cost)
+        document.getElementById("cost").innerHTML= (costo - cost)+ " USD";
 
         
     }
@@ -364,26 +364,42 @@ function deleteItem() {
 function deleteItem1() {
     const element1 = document.getElementById("added-articles-container");
     element1.remove();
-    let costo = parseInt(document.getElementById("cost").innerHTML)
+    let costo = parseInt(document.getElementById("cost").innerHTML);
+    let cost1 = addedProd.cost;
+
     for (let i = 0; i < cartArray.articles.length; i++)  { 
-        let articles = cartArray.articles[i];
-        let cost1 = addedProd.cost;
 
-        document.getElementById("cost").innerHTML= (costo-cost1)
-
+        if ((addedProd.currency === "USD") ) { 
+            document.getElementById("cost").innerHTML= (costo-cost1)+ " USD";
+        }
+        if ((addedProd.currency === "UYU") ) { 
+            document.getElementById("cost").innerHTML= (costo-cost1/40)+ " USD";
+        }
     }
 
     let option1 = document.getElementById("radio1");
     let option2 = document.getElementById("radio2");
     let option3= document.getElementById("radio3");
 
+    if ((addedProd.currency === "USD") ) { 
     if (option1.checked){
-        document.getElementById("shipping").innerHTML =+  (document.getElementById("cost").innerHTML)*0.15 + " USD";
+        document.getElementById("shipping").innerHTML =+  (costo-cost1)*0.15 + " USD";
     } if (option2.checked){
-        document.getElementById("shipping").innerHTML =+ (document.getElementById("cost").innerHTML)*0.07 + " USD";
+        document.getElementById("shipping").innerHTML =+ (costo-cost1)*0.07 + " USD";
     } if (option3.checked){
-        document.getElementById("shipping").innerHTML =+ (document.getElementById("cost").innerHTML)*0.05 + " USD";
+        document.getElementById("shipping").innerHTML =+ (costo-cost1)*0.05 + " USD";
+    }
     }
 
-    document.getElementById("suma").innerHTML = + (parseInt(document.getElementById("cost").innerHTML)) + (parseInt(document.getElementById("shipping").innerHTML)) + " USD"
+    if ((addedProd.currency === "UYU") ) { 
+        if (option1.checked){
+            document.getElementById("shipping").innerHTML =+  (costo-cost1/40)*0.15 + " USD";
+        } if (option2.checked){
+            document.getElementById("shipping").innerHTML =+ (costo-cost1/40)*0.07 + " USD";
+        } if (option3.checked){
+            document.getElementById("shipping").innerHTML =+ (costo-cost1/40)*0.05 + " USD";
+        }
+        }
+    document.getElementById("suma").innerHTML = + (parseInt(costo-cost1)) + (parseInt(document.getElementById("shipping").innerHTML)) + " USD"
 }
+

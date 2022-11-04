@@ -52,6 +52,9 @@ function showCartProducts(){
                                     <td>`+ articles.unitCost + " " + articles.currency +`</td>
                                     <td><input style="width: 40px" min="1" onchange="inputQuant(); costs(); shipmentCost(); sumaTotal()" type="number" name="cantidad" id="cantidad" value=`+ articles.count +`></td>
                                     <td id="total">`+ (articles.unitCost * articles.count) + " " + articles.currency +`</td>
+                                    <td><button class="btn btn-delete" onclick="deleteItem()" >
+                                    <i class="fa fa-trash" id="delete"></i>
+                                    </button></td>
                             </tr>
                             </tbody>
                         </table>   
@@ -110,6 +113,9 @@ function addItems(){
                                 <td>`+ addedProd.cost + " " + addedProd.currency +`</td>
                                 <td><input style="width: 40px" min="1" onchange="inputAddedQuant(); costs(); shipmentCost(); sumaTotal()" type="number" name="cantidad" id="newCantidad" value="1"></td>
                                 <td id="newTotal">`+ (addedProd.cost) + " " + addedProd.currency +`</td>
+                                <td><button class="btn btn-delete" onclick="deleteItem1()" >
+                                <i class="fa fa-trash" id="delete1"></i> 
+                                </button></td>
                         </tr>
                         </tbody>
                     </table>   
@@ -327,5 +333,57 @@ function buy(){
 
 }
 
+/* E6: desafío */ 
 
+function deleteItem() {
+    const element = document.getElementById("articles-container");
+    element.remove();
+    let costo = parseInt(document.getElementById("cost").innerHTML)
+    for (let i = 0; i < cartArray.articles.length; i++)  { 
+        let articles = cartArray.articles[i];
+        let cost = articles.unitCost;
+        document.getElementById("cost").innerHTML= (costo- cost)
 
+        
+    }
+
+    let option1 = document.getElementById("radio1");
+    let option2 = document.getElementById("radio2");
+    let option3= document.getElementById("radio3");
+
+    if (option1.checked){
+        document.getElementById("shipping").innerHTML =+  (document.getElementById("cost").innerHTML)*0.15 + " USD";
+    } if (option2.checked){
+        document.getElementById("shipping").innerHTML =+ (document.getElementById("cost").innerHTML)*0.07 + " USD";
+    } if (option3.checked){
+        document.getElementById("shipping").innerHTML =+ (document.getElementById("cost").innerHTML)*0.05 + " USD";
+    }
+
+    document.getElementById("suma").innerHTML = + (parseInt(document.getElementById("cost").innerHTML)) + (parseInt(document.getElementById("shipping").innerHTML)) + " USD"
+}
+function deleteItem1() {
+    const element1 = document.getElementById("added-articles-container");
+    element1.remove();
+    let costo = parseInt(document.getElementById("cost").innerHTML)
+    for (let i = 0; i < cartArray.articles.length; i++)  { 
+        let articles = cartArray.articles[i];
+        let cost1 = addedProd.cost;
+
+        document.getElementById("cost").innerHTML= (costo-cost1)
+
+    }
+
+    let option1 = document.getElementById("radio1");
+    let option2 = document.getElementById("radio2");
+    let option3= document.getElementById("radio3");
+
+    if (option1.checked){
+        document.getElementById("shipping").innerHTML =+  (document.getElementById("cost").innerHTML)*0.15 + " USD";
+    } if (option2.checked){
+        document.getElementById("shipping").innerHTML =+ (document.getElementById("cost").innerHTML)*0.07 + " USD";
+    } if (option3.checked){
+        document.getElementById("shipping").innerHTML =+ (document.getElementById("cost").innerHTML)*0.05 + " USD";
+    }
+
+    document.getElementById("suma").innerHTML = + (parseInt(document.getElementById("cost").innerHTML)) + (parseInt(document.getElementById("shipping").innerHTML)) + " USD"
+}

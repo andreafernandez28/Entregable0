@@ -1,11 +1,11 @@
 let cartArray = []; /* E5: Array donde cargo datos de Cart-info*/
-
+let username = localStorage.getItem("username");
+let showUsername = username.replace(/["]+/g, '')
 
 /* E5: EL donde recibo la info del carrito del usuario 25801 y la cargo al array anterior*/
 document.addEventListener("DOMContentLoaded", function(e){
 
-    let username = localStorage.getItem("username");
-    let showUsername = username.replace(/["]+/g, '')
+
 
     getJSONData(CART_INFO_URL + showUsername + EXT_TYPE).then(function(resultObj){
         if (resultObj.status === "ok")
@@ -139,39 +139,46 @@ function inputAddedQuant(){
 function costs (){
     let qant = document.getElementById("newCantidad");
     let qant1 = document.getElementById("cantidad");
-    for (let i = 0; i < cartArray.articles.length; i++)  { 
-        let articles = cartArray.articles[i];
-        let cost = articles.unitCost;
-        let cost1 = addedProd.cost;
+    let cost1 = addedProd.cost;
 
-        if ((articles.currency === "UYU") && (addedProd.currency === "USD") ){
+    if(username === '"25801"'){ 
+        for (let i = 0; i < cartArray.articles.length; i++)  { 
+            let articles = cartArray.articles[i];
+            let cost = articles.unitCost;
 
-            document.getElementById("cost").innerHTML = + (cost/40*qant1.value+cost1*qant.value) +" USD";
+                if (addedProd.currency === "USD"){
 
-        }if ((articles.currency === "UYU") && (addedProd.currency === "UYU") ){
+                    document.getElementById("cost").innerHTML = + (cost*qant1.value+cost1*qant.value) +" USD";
 
-            document.getElementById("cost").innerHTML = + (cost/40*qant1.value+cost1/40*qant.value) +" USD";
- 
-        }if ((articles.currency === "USD") && (addedProd.currency === "UYU") ){
+                }if (addedProd.currency === "UYU"){
 
-            document.getElementById("cost").innerHTML = + (cost*qant1.value+cost1/40*qant.value) +" USD";
-
-        }if ((articles.currency === "USD") && (addedProd.currency === "USD") ){
-
-            document.getElementById("cost").innerHTML = + (cost*qant1.value+cost1*qant.value) +" USD";
-
+                    document.getElementById("cost").innerHTML = + (cost*qant1.value+cost1/40*qant.value) +" USD";
         
+                }
+            }
 
     }
+    else{ 
+        if (addedProd.currency === "USD"){
 
-}
-}
+            document.getElementById("cost").innerHTML = + (cost1*qant.value) +" USD";
+
+        }if (addedProd.currency === "UYU"){
+
+            document.getElementById("cost").innerHTML = + (cost1/40*qant.value) +" USD";
+
+        }
+    }
+            
+    }
+
+
 /* E6: el costo del envío según el tipo seleccionado */
 function shipmentCost(){
     let option1 = document.getElementById("radio1");
     let option2 = document.getElementById("radio2");
     let option3= document.getElementById("radio3");
-
+    
     let costo = parseInt(document.getElementById("cost").innerHTML);
 
     if (option1.checked){
@@ -343,23 +350,10 @@ function deleteItem() {
         let articles = cartArray.articles[i];
         let cost = articles.unitCost;
         document.getElementById("cost").innerHTML= (costo - cost)+ " USD";
-
-        
+        shipmentCost()
+        sumaTotal()
     }
 
-    let option1 = document.getElementById("radio1");
-    let option2 = document.getElementById("radio2");
-    let option3= document.getElementById("radio3");
-
-    if (option1.checked){
-        document.getElementById("shipping").innerHTML =+  (document.getElementById("cost").innerHTML)*0.15 + " USD";
-    } if (option2.checked){
-        document.getElementById("shipping").innerHTML =+ (document.getElementById("cost").innerHTML)*0.07 + " USD";
-    } if (option3.checked){
-        document.getElementById("shipping").innerHTML =+ (document.getElementById("cost").innerHTML)*0.05 + " USD";
-    }
-
-    document.getElementById("suma").innerHTML = + (parseInt(document.getElementById("cost").innerHTML)) + (parseInt(document.getElementById("shipping").innerHTML)) + " USD"
 }
 function deleteItem1() {
     const element1 = document.getElementById("added-articles-container");
@@ -375,31 +369,9 @@ function deleteItem1() {
         if ((addedProd.currency === "UYU") ) { 
             document.getElementById("cost").innerHTML= (costo-cost1/40)+ " USD";
         }
+        shipmentCost()
+        sumaTotal()
     }
 
-    let option1 = document.getElementById("radio1");
-    let option2 = document.getElementById("radio2");
-    let option3= document.getElementById("radio3");
-
-    if ((addedProd.currency === "USD") ) { 
-    if (option1.checked){
-        document.getElementById("shipping").innerHTML =+  (costo-cost1)*0.15 + " USD";
-    } if (option2.checked){
-        document.getElementById("shipping").innerHTML =+ (costo-cost1)*0.07 + " USD";
-    } if (option3.checked){
-        document.getElementById("shipping").innerHTML =+ (costo-cost1)*0.05 + " USD";
-    }
-    }
-
-    if ((addedProd.currency === "UYU") ) { 
-        if (option1.checked){
-            document.getElementById("shipping").innerHTML =+  (costo-cost1/40)*0.15 + " USD";
-        } if (option2.checked){
-            document.getElementById("shipping").innerHTML =+ (costo-cost1/40)*0.07 + " USD";
-        } if (option3.checked){
-            document.getElementById("shipping").innerHTML =+ (costo-cost1/40)*0.05 + " USD";
-        }
-        }
-    document.getElementById("suma").innerHTML = + (parseInt(costo-cost1)) + (parseInt(document.getElementById("shipping").innerHTML)) + " USD"
 }
 
